@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
-  <title>
-    C3Dev - Home
-  </title>
-  <body>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX3T7JR4FZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>C3 - Home</title>
+    </head>
+    <body>
+      <!-- Consent Banner -->
+<div id="consent-banner" style="position: fixed; bottom: 0; background-color: #fff; width: 100%; padding: 20px; text-align: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+  <p style="margin: 0; font-size: 16px; color: #333;">
+    I use cookies to analyze our traffic and improve your experience. Do you consent to the use of Google Analytics?
+  </p>
+  <div style="margin-top: 10px;">
+    <button onclick="acceptConsent()" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin-right: 10px;">
+      Accept
+    </button>
+    <button onclick="declineConsent()" style="background-color: #f44336; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px;">
+      Decline
+    </button>
+  </div>
+</div>
 
-  gtag('config', 'G-EX3T7JR4FZ');
+<script>
+  // Check if consent has been previously given
+  window.onload = function() {
+    if (localStorage.getItem('analytics_consent') === 'true') {
+      loadAnalytics();
+      document.getElementById('consent-banner').style.display = 'none';
+    }
+  };
+
+  // Function to load Google Analytics after consent
+  function loadAnalytics() {
+    (function(){
+      var gtagScript = document.createElement('script');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-EX3T7JR4FZ';
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EX3T7JR4FZ');
+    })();
+  }
+
+  // Accept Consent
+  function acceptConsent() {
+    localStorage.setItem('analytics_consent', 'true');
+    loadAnalytics();
+    document.getElementById('consent-banner').style.display = 'none';
+  }
+
+  // Decline Consent
+  function declineConsent() {
+    localStorage.setItem('analytics_consent', 'false');
+    document.getElementById('consent-banner').style.display = 'none';
+  }
 </script>
-    <h1>In Progress</h1>
-  </body>
-</head>
+    </body>
+</html>
