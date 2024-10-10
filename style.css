@@ -1,0 +1,36 @@
+.boxed {
+    width: 675px;
+    padding: 20px;
+    background-color: rgb(111, 111, 111);
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+}
+.title {
+    background: linear-gradient(to right, blueviolet, pink);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.secthead {
+    background: linear-gradient(to left, rgb(0, 255, 174), rgb(103, 103, 255));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body {
+    background-color: rgb(45, 45, 45);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p {
+    color: white;
+}
+a {
+    font-weight: bold;
+    color: rgb(181, 71, 255);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: lightblue;
+}
